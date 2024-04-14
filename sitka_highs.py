@@ -5,7 +5,7 @@ from datetime import datetime
 
 
 
-path = Path('weather_data/death_valley_2021_simple.csv')
+path = Path('weather_data/3653093.csv')
 lines = path.read_text(encoding='utf-8').splitlines()
 
 reader = csv.reader(lines)
@@ -14,10 +14,10 @@ header_row = next(reader)
 # extract dates and high/low temperatures
 dates, highs, lows = [], [], []
 for row in reader:
-    current_date = datetime.strptime(row[2], '%Y-%m-%d')
+    current_date = datetime.strptime(row[5], '%Y-%m-%d')
     try:
-        high = int(row[3])
-        low = int(row[4])
+        high = int(row[12])
+        low = int(row[14])
     except ValueError:
         print(f"Missing data for {current_date}")
     else:
